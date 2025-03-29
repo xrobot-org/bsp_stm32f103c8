@@ -1,0 +1,52 @@
+terminal_source: ''
+software_timer:
+  priority: 2
+  stack_depth: 512
+SPI:
+  spi1:
+    dma_enable_min_size: 3
+USART:
+  usart1:
+    tx_buffer_size: 128
+    rx_buffer_size: 128
+    tx_queue_size: 5
+    rx_queue_size: 5
+ADC:
+  adc1:
+    buffer_size: 128
+    vref: 3.3
+Terminal:
+  READ_BUFF_SIZE: 32
+  MAX_LINE_SIZE: 32
+  MAX_ARG_NUMBER: 5
+  MAX_HISTORY_NUMBER: 5
+SYSTEM: None
+device_aliases:
+  power_manager:
+    type: PowerManager
+    aliases:
+    - power_manager
+  LED:
+    type: GPIO
+    aliases:
+    - LED
+  pwm_tim2_ch3:
+    type: PWM
+    aliases:
+    - pwm_tim2_ch3
+  adc1_adc_channel_0:
+    type: ADC
+    aliases:
+    - adc1_adc_channel_0
+  spi1:
+    type: SPI
+    aliases:
+    - spi1
+  usart1:
+    type: UART
+    aliases:
+    - usart1
+  uart_cdc:
+    type: UART
+    aliases:
+    - uart_cdc
