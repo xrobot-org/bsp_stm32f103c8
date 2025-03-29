@@ -21,7 +21,7 @@ jobs:
     - name: install pip packages
       run: pip install libxr xrobot
     - name: config libxr
-      run: xr_cubemx_cfg.exe -d ./ -c --xrobot
+      run: xr_cubemx_cfg -d ./ -c --xrobot
     - name: config xrobot
       run: xrobot_setup && xrobot_setup
     - name: config cmake
