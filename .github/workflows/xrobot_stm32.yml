@@ -1,0 +1,30 @@
+name: xrobot stm32 build test
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xrobot-org/docker-image-stm32:main
+      options: --user 0
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: init submodule
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE" && git submodule update --init --recursive
+    - name: install pip packages
+      run: pip install libxr xrobot
+    - name: config libxr
+      run: xr_cubemx_cfg.exe -d ./ -c --xrobot
+    - name: config xrobot
+      run: xrobot_setup && xrobot_setup
+    - name: config cmake
+      run: cmake . -DDEV_C_TEST_BUILD=True -DCMAKE_TOOLCHAIN_FILE:STRING=cmake/gcc-arm-none-eabi.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -Bbuild -G Ninja
+    - name: build
+      run: cmake --build build
