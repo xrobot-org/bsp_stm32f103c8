@@ -51,6 +51,14 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* LibXR USB Tx Cplt callback (Auto-generated, For STM32F1) */
+#if defined(STM32F1) && defined(HAL_PCD_MODULE_ENABLED)
+extern void STM32_USB_ISR_Handler_F1(void);
+#endif
+/* LibXR UART IDLE callback (Auto-generated) */
+#ifdef HAL_UART_MODULE_ENABLED
+extern void STM32_UART_ISR_Handler_IDLE(UART_HandleTypeDef *huart);
+#endif
 #ifdef HAL_UART_MODULE_ENABLED
 extern void STM32_UART_ISR_Handler_IDLE(UART_HandleTypeDef *huart);
 #endif
@@ -242,6 +250,11 @@ void USB_HP_CAN1_TX_IRQHandler(void)
   /* USER CODE END USB_HP_CAN1_TX_IRQn 0 */
   HAL_PCD_IRQHandler(&hpcd_USB_FS);
   /* USER CODE BEGIN USB_HP_CAN1_TX_IRQn 1 */
+  /* LibXR USB Tx Cplt callback (Auto-generated, For STM32F1) */
+#if defined(STM32F1) && defined(HAL_PCD_MODULE_ENABLED)
+  STM32_USB_ISR_Handler_F1();
+#endif
+
 
   /* USER CODE END USB_HP_CAN1_TX_IRQn 1 */
 }
@@ -256,6 +269,11 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
   /* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
   HAL_PCD_IRQHandler(&hpcd_USB_FS);
   /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 1 */
+  /* LibXR USB Tx Cplt callback (Auto-generated, For STM32F1) */
+#if defined(STM32F1) && defined(HAL_PCD_MODULE_ENABLED)
+  STM32_USB_ISR_Handler_F1();
+#endif
+
 
   /* USER CODE END USB_LP_CAN1_RX0_IRQn 1 */
 }
@@ -270,6 +288,10 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
+  /* LibXR UART IDLE callback (Auto-generated) */
+#ifdef HAL_UART_MODULE_ENABLED
+  STM32_UART_ISR_Handler_IDLE(&huart1);
+#endif
   STM32_UART_ISR_Handler_IDLE(&huart1);
 
   /* USER CODE END USART1_IRQn 1 */
