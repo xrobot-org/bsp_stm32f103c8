@@ -2,7 +2,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # LibXR
-set(LIBXR_SYSTEM None)
+set(LIBXR_SYSTEM FreeRTOS)
 set(LIBXR_DRIVER st)
 add_subdirectory(Middlewares/Third_Party/LibXR)
 target_link_libraries(xr
